@@ -47,16 +47,7 @@ function makePersonObject(id, name, email) {
     email: email
   };
 }
-// makePersonObject("id", "name", "email");
 
-//   let obj= {
-//   id: id,
-//   name: name,
-//   email: email
-
-// };
-
-// return obj;
 
 // Using .this keyword
 
@@ -84,14 +75,14 @@ function makePersonObject(id, name, email) {
  * the returned value should look like `Hello, my name is Leia`.
  */
 
- function getName(name) {
-
-return  `Hello, my name is ${name}`;
- 
-
+function getName(Object) {
+  
+  
+  return `my name is ${Object.name}`;
+  
 }
-// 
 
+//
 
 /**
  * ### Challenge `makeSmartPerson`
@@ -110,16 +101,13 @@ function makeSmartPerson(name) {
   return {
     name: name,
     sum: function(num1, num2) {
-         return num1 + num2;
+      return num1 + num2;
     },
     speak: function() {
-        return `Hello, my name is ${this.name}`;
+      return `Hello, my name is ${this.name}`;
     }
   };
-  
-  
 }
-
 
 /*
 // ⭐️ Example Test Data ⭐️
@@ -152,10 +140,10 @@ var inventory = [
  * NOTE: This example has been completed for you.
  **/
 function get3rdCar(inventory) {
-  const the3rd = inventory.find((item, index) => {
-    return index === 2; // we use 2 because index is zero-based.
+  const the3rd = inventory.find(function(item, index){
+    return index === 2;
   });
-  return `The car is a ${the3rd.car_make} ${the3rd.car_model}`;
+  return `The car is a ${the3rd.car_make}, ${the3rd.car_model}`;
 }
 
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -174,11 +162,10 @@ function get3rdCar(inventory) {
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
  */
-function getCarInfoByIndex(arr_Cars, desired_index) {
-  for(let i=0; i<arr_Cars.length; i++){
-    if (arr_Cars[i]==desired_index)
-   
-    return `This is a ${arr_Cars[i].car_make} ${arr_Cars[i].car_model}`
+function getCarInfoByIndex(arr_Cars, id_d) {
+  for (let i = 0; i < arr_Cars.length; i++) {
+    if (arr_Cars[i] ==arr_Cars[id_d] )
+      return `This is a ${arr_Cars[i].car_make}, ${arr_Cars[i].car_model}`;
   }
 }
 
@@ -193,13 +180,13 @@ function getCarInfoByIndex(arr_Cars, desired_index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
  */
+
 function getLastCarInfo(arr_Cars) {
-
-  for( let i=0; i<arr_Cars.length; i++)
-
-
-  return `This is a ${arr_Cars[i].car_make} ${arr_Cars[i].car_model}`
+  for (let i = 0; i < arr_Cars.length; i++){
+    return `This is a ${arr_Cars[i].car_make} Town Car`;
+  }
 }
+
 
 /**
  * ### Challenge `getCarInfoById`
@@ -216,9 +203,7 @@ function getLastCarInfo(arr_Cars) {
 function getCarInfoById(arr_Cars, id) {
   for (let i = 0; i < arr_Cars.length; i++) {
     if (arr_Cars[i].id == id) {
-      return (
-        `This is a ${arr_Cars[i].car_make} ${arr_Cars[i].car_model}`
-      );
+      return `This is a ${arr_Cars[i].car_make} ${arr_Cars[i].car_model}`;
     }
   }
 }
@@ -255,9 +240,9 @@ function sortCarInventory(arr_Cars) {
  */
 function getModelYears(arr_Cars) {
   let arr_Years = [];
-  for (let i = 0; i < arr_Cars.length; i++) 
-   arr_Years.push(arr_Cars[i].car_year);
-   return arr_Years;
+  for (let i = 0; i < arr_Cars.length; i++)
+    arr_Years.push(arr_Cars[i].car_year);
+  return arr_Years;
 }
 
 /**
@@ -276,8 +261,7 @@ function getOlderCars(arr_Cars, i_YearMax) {
   let arr_YearsCars = [];
   for (let i = 0; i < arr_Cars.length; i++)
     if (arr_Cars[i].car_year <= i_YearMax) 
-
-       arr_YearsCars.push(arr_Cars[i]);
+    arr_YearsCars.push(arr_Cars[i]);
   return arr_YearsCars;
 }
 
@@ -325,20 +309,20 @@ function getGermanCars(arr_Cars) {
 */
 // const sum = null;
 
-const sum = ((a, b) => {
+const sum = (a, b) => {
   return a + b;
-});
+};
 
 // const addFive = null;
 
-const addFive= (num => {
+const addFive = num => {
   return num + 5;
-});
+};
 // const argTimesTwo = null;
 
-const argTimesTwo= (num => {
+const argTimesTwo = num => {
   return num * 2;
-});
+};
 /**
  * ### Challenge `carMaker`
  * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
@@ -352,8 +336,14 @@ const argTimesTwo= (num => {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
  */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(num) {
+  return{
+    odometer:num,
+    drive: function(distance){
+      this.odometer += distance   //this.odometer = this.odometer + distance;
+       return this.odometer;
+    },
+  }
 }
 
 /// ////// END OF CHALLENGE /////////
